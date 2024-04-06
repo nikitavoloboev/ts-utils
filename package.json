@@ -6,7 +6,8 @@
   "dependencies": {
     "bun": "^1.1.2",
     "clipboardy": "^4.0.0",
-    "osascript-tag": "^0.1.2"
+    "osascript-tag": "^0.1.2",
+    "ufo": "^1.5.3"
   },
   "devDependencies": {
     "@types/bun": "^1.0.12",
