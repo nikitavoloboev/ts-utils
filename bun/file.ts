@@ -45,6 +45,21 @@ export async function readFileContent(filePath: string) {
   return await file.text()
 }
 
+// currentFilePath has to be import.meta.url
+export async function readFileContentRelativeToCurrentFolder(
+  currentFilePath: string,
+  relativePath: string,
+) {
+  // Calculate the directory of the currentPath
+  const directoryPath = path.dirname(currentFilePath)
+  // Resolve the relativePath from the directoryPath
+  const absolutePath = path.join(directoryPath, relativePath)
+  // Use Bun.file to access the file at the absolute path
+  const file = Bun.file(absolutePath)
+  // Return the text content of the file
+  return await file.text()
+}
+
 export function getFilePathOfFileFromProvidedAbsolutePathFromExecutedBunFile(
   filePathOfBunFile: string,
   absolutePath: string,
