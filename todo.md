@@ -1,0 +1,3 @@
+- fix npm publishing
+  - current github action is from [MTKruto](https://github.com/MTKruto/MTKruto/blob/main/.github/workflows/release.yml)
+    - implementation discussion [here](https://discord.com/channels/684898665143206084/1203185670508515399/1225777703374950401)

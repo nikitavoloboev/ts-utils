@@ -1,0 +1,26 @@
+{
+  "name": "@nikiv/ts-utils",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc"
+  },
+  "dependencies": {
+    "bun": "^1.1.2"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.12",
+    "watcher": "^2.3.0"
+  },
+  "prettier": {
+    "semi": false
+  },
+  "exports": {
+    "bun": {
+      "import": "./mod.ts"
+    },
+    "deno": {
+      "import": "./deno-mod.ts"
+    }
+  },
+  "main": "./mod.ts",
+  "module": "./mod.ts"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@nikiv/utils",
+  "version": "0.1.0",
+  "exports": "./deno-mod.ts",
+  "tasks": {
+    "dev": "deno run --watch -q deno/main.ts",
+    "publish": "deno publish"
+  },
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@^0.41.1"
+  }
+}
