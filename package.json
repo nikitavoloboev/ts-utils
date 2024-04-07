@@ -3,6 +3,7 @@
   "scripts": {
     "build": "rm -rf ./dist && tsc"
   },
+  "type": "module",
   "dependencies": {
     "bun": "^1.1.2",
     "clipboardy": "^4.0.0",
