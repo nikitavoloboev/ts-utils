@@ -2,7 +2,6 @@ import { parseURL } from "ufo"
 
 export function splitUrlByProtocol(url: string) {
   let parsedUrl = parseURL(url)
-  console.log(parsedUrl)
   let host = parsedUrl.host
   if (host?.includes("www")) {
     host = host?.replace("www.", "")
@@ -30,4 +29,11 @@ export async function getTitleFromUrl(url: string): Promise<string> {
     console.error("Error fetching URL:", error)
     return "Error fetching title"
   }
+}
+
+export function removeTrailingSlash(str: string) {
+  if (str.endsWith("/")) {
+    return str.slice(0, -1)
+  }
+  return str
 }
