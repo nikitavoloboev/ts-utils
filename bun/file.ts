@@ -138,6 +138,7 @@ export async function readConfigFileValue(
     os.homedir(),
     `.config/${absolutePathToConfigFileFromHomeConfigFolder}`,
   )
+
   const file = Bun.file(configFilePath)
   const text = await file.text()
 
@@ -148,9 +149,9 @@ export async function readConfigFileValue(
   for (const line of lines) {
     // Split the line by the '=' character
     const parts = line.split("=")
-    if (parts[0].trim() === key) {
+    if (parts.length > 1 && parts[0]?.trim() === key) {
       // If the key matches, return the value
-      return parts[1].trim()
+      return parts[1]?.trim()
     }
   }
 
