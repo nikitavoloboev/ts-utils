@@ -1,6 +1,6 @@
 import { parseURL } from "ufo"
 
-export function splitUrlByProtocol(url: string) {
+export function splitUrlByProtocol(url: string): string[] {
   let parsedUrl = parseURL(url)
   let host = parsedUrl.host
   if (host?.includes("www")) {
@@ -31,7 +31,7 @@ export async function getTitleFromUrl(url: string): Promise<string> {
   }
 }
 
-export function removeTrailingSlash(str: string) {
+export function removeTrailingSlash(str: string): string {
   if (str.endsWith("/")) {
     return str.slice(0, -1)
   }
