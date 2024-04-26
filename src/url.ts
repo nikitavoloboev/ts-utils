@@ -1,6 +1,6 @@
 import { parseURL } from "ufo"
 
-export function splitUrlByProtocol(url: string): string[] {
+export function splitUrlByProtocol(url: string): [string, string | undefined] {
   let parsedUrl = parseURL(url)
   let host = parsedUrl.host
   if (host?.includes("www")) {
