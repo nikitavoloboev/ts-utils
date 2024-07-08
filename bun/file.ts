@@ -2,6 +2,8 @@ import { promises as fs, writeFileSync } from "fs"
 import * as path from "path"
 import * as os from "os"
 
+// TODO: add function `readJPGFilesFromFolder` from kuskus seed.ts
+
 // take in JSON of some kind and write it to ~/src/data
 // returns path of file on success
 export async function writeContentToSrcData(
@@ -21,9 +23,25 @@ export async function writeContentToSrcData(
   }
 }
 
+export async function writeContentToDesktopFile(
+  data: string | Buffer,
+  fileName: string,
+): Promise<string | void> {
+  const desktopDir = path.join(os.homedir(), "Desktop")
+  const filePath = path.join(desktopDir, fileName)
+
+  try {
+    await fs.writeFile(filePath, data)
+    console.log(`File written successfully to ${filePath}`)
+    return filePath
+  } catch (error) {
+    console.error("Error writing to file:", error)
+  }
+}
+
 // take in JSON of some kind and write it to ~/Desktop
 // returns path of file on success
-export async function writeContentToDesktopFile(
+export async function writeJsonContentToDesktopFile(
   data: Array<any>,
   fileName: string,
 ): Promise<string | void> {

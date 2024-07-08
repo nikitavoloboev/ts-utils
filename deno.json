@@ -1,6 +1,6 @@
 {
   "name": "@nikiv/utils",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "exports": "./mod.ts",
   "tasks": {
     "dev": "deno run --watch -q deno/main.ts",

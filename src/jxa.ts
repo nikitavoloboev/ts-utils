@@ -1,6 +1,6 @@
 import osascript from "osascript-tag"
 
-export async function executeJxa(script: string) {
+export async function executeJxa(script: string): Promise<any> {
   try {
     const result = await osascript.jxa({ parse: true })`${script}`
     return result
