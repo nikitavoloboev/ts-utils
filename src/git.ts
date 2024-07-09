@@ -1,17 +1,43 @@
-import { $ } from "bun"
+import { $, sleep, type ShellOutput } from "bun"
 
-export async function commitRepoWithDot(gitRepoPath: string) {
+export async function commitRepoWithDot(gitRepoPath: string, timeout = 30000) {
   try {
+    console.log(`Changing directory to: ${gitRepoPath}`)
     process.chdir(gitRepoPath)
 
-    await $`git add .`
+    console.log("Adding changes...")
+    const addPromise = $`git add .`
+    const timeoutPromise = sleep(timeout)
 
-    await $`git commit -m "."`
+    const addResult = (await Promise.race([addPromise, timeoutPromise])) as
+      | ShellOutput
+      | undefined
 
-    await $`git push`
+    if (addResult === undefined) {
+      throw new Error(`Git add timed out after ${timeout}ms`)
+    }
+    if ("exitCode" in addResult && addResult.exitCode !== 0) {
+      throw new Error(`Git add failed: ${addResult.stderr}`)
+    }
+
+    console.log("Committing changes...")
+    const commitResult = await $`git commit -m "."`
+    if (commitResult.exitCode !== 0) {
+      throw new Error(`Git commit failed: ${commitResult.stderr}`)
+    }
+
+    console.log("Pushing changes...")
+    const pushResult = await $`git push`
+    if (pushResult.exitCode !== 0) {
+      throw new Error(`Git push failed: ${pushResult.stderr}`)
+    }
 
     console.log("Changes committed and pushed successfully.")
   } catch (error) {
-    console.error("Error committing and pushing changes:", error)
+    console.error("Error in commitRepoWithDot:", error)
+    if (error instanceof Error) {
+      console.error("Error message:", error.message)
+    }
+    throw error
   }
 }
