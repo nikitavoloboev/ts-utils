@@ -10,6 +10,7 @@ export * from "./src/html.ts"
 export * from "./src/safari.ts"
 export * from "./src/time.ts"
 export * from "./src/other.ts"
+export * from "./src/git.ts"
 
 // TODO: have way to distinguish code that relies to be ran via bun
 // TODO: can do same for deno/node too but focus is on bun

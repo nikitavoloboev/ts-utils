@@ -1,4 +1,5 @@
 import { promises as fs, writeFileSync } from "fs"
+import * as fsSync from "fs"
 import * as path from "path"
 import * as os from "os"
 
@@ -148,6 +149,20 @@ export async function readConfigFileContent(
   return await file.text()
 }
 
+// TODO: broken
+// export function getMarkdownFiles(dirPath: string) {
+//   let mdFiles = <string[]>[]
+//   fs.readdirSync(dirPath).forEach((file) => {
+//     const fullPath = path.join(dirPath, file)
+//     if (fs.statSync(fullPath).isDirectory()) {
+//       mdFiles = mdFiles.concat(getMarkdownFiles(fullPath))
+//     } else if (path.extname(fullPath) === ".md") {
+//       mdFiles.push(fullPath)
+//     }
+//   })
+//   return mdFiles
+// }
+
 export async function readConfigFileValue(
   absolutePathToConfigFileFromHomeConfigFolder: string,
   key: string,
@@ -296,16 +311,16 @@ export async function checkIfFieldExistsInJsonFile(
   return json[fieldName] !== undefined
 }
 
-// TODO: broken
-// export function getMarkdownFiles(dirPath: string) {
-//   let mdFiles = <string[]>[]
-//   fs.readdirSync(dirPath).forEach((file) => {
-//     const fullPath = path.join(dirPath, file)
-//     if (fs.statSync(fullPath).isDirectory()) {
-//       mdFiles = mdFiles.concat(getMarkdownFiles(fullPath))
-//     } else if (path.extname(fullPath) === ".md") {
-//       mdFiles.push(fullPath)
-//     }
-//   })
-//   return mdFiles
-// }
+export function findGitDirPath(filePath: string): string {
+  let currentDir = path.dirname(filePath)
+
+  while (currentDir !== "/") {
+    const gitDir = path.join(currentDir, ".git")
+    if (fsSync.existsSync(gitDir) && fsSync.statSync(gitDir).isDirectory()) {
+      return currentDir
+    }
+    currentDir = path.dirname(currentDir)
+  }
+
+  throw new Error("File is not inside a Git repository.")
+}
