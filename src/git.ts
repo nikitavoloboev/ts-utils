@@ -5,6 +5,22 @@ export async function commitRepoWithDot(gitRepoPath: string, timeout = 30000) {
     console.log(`Changing directory to: ${gitRepoPath}`)
     process.chdir(gitRepoPath)
 
+    console.log("Pulling latest changes...")
+    const pullPromise = $`git pull`
+    const pullTimeoutPromise = sleep(timeout)
+
+    const pullResult = (await Promise.race([
+      pullPromise,
+      pullTimeoutPromise,
+    ])) as ShellOutput | undefined
+
+    if (pullResult === undefined) {
+      throw new Error(`Git pull timed out after ${timeout}ms`)
+    }
+    if ("exitCode" in pullResult && pullResult.exitCode !== 0) {
+      throw new Error(`Git pull failed: ${pullResult.stderr}`)
+    }
+
     console.log("Adding changes...")
     const addPromise = $`git add .`
     const timeoutPromise = sleep(timeout)
