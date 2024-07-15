@@ -27,7 +27,8 @@ export async function commitRepoWithDot(gitRepoPath: string, timeout = 30000) {
     }
 
     console.log("Pushing changes...")
-    const pushResult = await $`git push`
+    // const pushResult = await $`git push`
+    const pushResult = await $`GIT_SSH_COMMAND="ssh -o BatchMode=yes" git push`
     if (pushResult.exitCode !== 0) {
       throw new Error(`Git push failed: ${pushResult.stderr}`)
     }
