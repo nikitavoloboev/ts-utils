@@ -13,5 +13,8 @@ export function logSeperator() {
   console.log("-----------------------")
 }
 
+// this is function that will be exported, users then define functions above themselves perhaps?
+export function logSetup() {}
+
 // TODO: for this to work well, there should be vscode extension or something that will automatically import the `log` function if it's ever used (auto add imports)
 // applies to all things, i.e. if there is some code that if you do `action` on it, there is only one import action it, activate it instantly
