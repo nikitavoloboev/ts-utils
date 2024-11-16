@@ -1,0 +1,18 @@
+{
+  "name": "@nikiv/ts-utils",
+  "type": "module",
+  "dependencies": {
+    "bun": "^1.1.34",
+    "clipboardy": "^4.0.0",
+    "osascript-tag": "^0.1.2",
+    "ufo": "^1.5.4"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.13",
+    "watcher": "^2.3.1"
+  },
+  "prettier": {
+    "semi": false
+  },
+  "main": "./mod.ts"
+}
