@@ -10,3 +10,12 @@ export async function executeJxa(script: string) {
     }
   }
 }
+
+export async function getCurrentActiveAppTitle() {
+  const appInfo = await executeJxa(`
+      const systemEvents = Application("System Events");
+      const frontmostApp = systemEvents.processes.whose({ frontmost: true })[0];
+      return frontmostApp.name();
+  `)
+  return appInfo
+}
