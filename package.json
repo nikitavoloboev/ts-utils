@@ -1,6 +1,7 @@
 {
   "name": "@nikiv/ts-utils",
-  "type": "module",
+  "description": "Utils of all kind",
+  "version": "0.1.7",
   "scripts": {
     "dev": "bun s",
     "s": "bun --watch scripts/run.ts",
@@ -20,5 +21,15 @@
   "prettier": {
     "semi": false
   },
-  "main": "./mod.ts"
+  "type": "module",
+  "main": "./mod.ts",
+  "types": "./mod.ts",
+  "repository": "github:nikitavoloboev/ts-utils",
+  "keywords": [
+    "typescript",
+    "utilities",
+    "bun"
+  ],
+  "author": "nikiv.dev",
+  "license": "MIT"
 }
