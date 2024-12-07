@@ -31,7 +31,7 @@ export async function appendObjectToJsonArrayFile(
   await writeJsonArrayToFile(filePath, dataArray)
 }
 
-export async function readJsonFromFile(filePath: string) {
+export async function readJsonFromFile(filePath: string): Promise<any> {
   const resolvedFilePath = filePath.startsWith("~")
     ? path.join(os.homedir(), filePath.slice(1))
     : filePath

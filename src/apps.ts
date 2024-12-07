@@ -1,6 +1,9 @@
 import { executeJxa } from "./jxa.js"
 
-export async function getCurrentCursorFileAndTitle() {
+export async function getCurrentCursorFileAndTitle(): Promise<{
+  title: string
+  file: string
+}> {
   const cursorInfo = await executeJxa(`
     const cursor = Application("Cursor");
     const systemEvents = Application("System Events");

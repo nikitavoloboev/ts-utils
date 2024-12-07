@@ -1,4 +1,4 @@
-export function getCurrentMonth() {
+export function getCurrentMonth(): string {
   const monthNames = [
     "January",
     "February",
@@ -17,7 +17,7 @@ export function getCurrentMonth() {
   return monthNames[currentDate.getMonth()]
 }
 
-export function getCurrentMonthAndDay() {
+export function getCurrentMonthAndDay(): string {
   const monthNames = [
     "January",
     "February",

@@ -1,6 +1,6 @@
 import osascript from "osascript-tag"
 
-export async function executeJxa(script: string) {
+export async function executeJxa(script: string): Promise<any> {
   try {
     const result = await osascript.jxa({ parse: true })`${script}`
     return result
@@ -11,7 +11,7 @@ export async function executeJxa(script: string) {
   }
 }
 
-export async function getCurrentActiveAppTitle() {
+export async function getCurrentActiveAppTitle(): Promise<string> {
   const appInfo = await executeJxa(`
       const systemEvents = Application("System Events");
       const frontmostApp = systemEvents.processes.whose({ frontmost: true })[0];
