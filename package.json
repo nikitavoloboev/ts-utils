@@ -1,6 +1,11 @@
 {
   "name": "@nikiv/ts-utils",
   "type": "module",
+  "scripts": {
+    "dev": "bun s",
+    "s": "bun --watch scripts/run.ts",
+    "sr": "bun --watch scripts/private-run.ts"
+  },
   "dependencies": {
     "bun": "^1.1.36",
     "clipboardy": "^4.0.0",
