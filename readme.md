@@ -12,6 +12,18 @@ bunx jsr add @nikiv/utils
 
 Other import options can be seen on [JSR page](https://jsr.io/@nikiv/utils).
 
+Can also clone repo and [bun link](https://bun.sh/docs/cli/link) it.
+
+```
+bun link
+```
+
+Then in repo you want to link package from:
+
+```
+bun link @nikiv/ts-utils
+```
+
 ## Setup
 
 ```
