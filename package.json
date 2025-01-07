@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "bun s",
     "s": "bun --watch scripts/run.ts",
-    "sr": "bun --watch scripts/private-run.ts",
+    "sr": "bun --watch scripts/p-run.ts",
     "jsr:publish": "bunx jsr publish"
   },
   "dependencies": {
