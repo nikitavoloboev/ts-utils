@@ -9,13 +9,13 @@
     "jsr:publish": "bunx jsr publish"
   },
   "dependencies": {
-    "bun": "^1.1.36",
+    "bun": "^1.2.2",
     "clipboardy": "^4.0.0",
     "osascript-tag": "^0.1.2",
     "ufo": "^1.5.4"
   },
   "devDependencies": {
-    "@types/bun": "^1.1.13",
+    "@types/bun": "^1.2.2",
     "watcher": "^2.3.1"
   },
   "prettier": {

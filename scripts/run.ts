@@ -1,3 +1,4 @@
-async function main() {}
+await main()
+console.log("✔️")
 
-main()
+async function main() {}
